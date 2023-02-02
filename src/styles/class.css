@@ -1,0 +1,33 @@
+body,
+html,
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+*,
+::before,
+::after {
+  border-color: var(--el-border-color-light);
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.position-center {
+  @apply -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+}
+
+.full-screen-view {
+  @apply w-screen h-screen fixed top-0 left-0;
+  z-index: 10;
+}
+
+.text-p {
+  color: var(--el-color-primary);
+}
+
+.bg-p {
+  background-color: var(--el-color-primary);
+}

@@ -1,0 +1,12 @@
+/** element-plus  */
+.el-drawer .el-drawer__header{
+  padding: 15px 20px 14px;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--el-border-color-lighter);
+  color: inherit;
+}
+
+.agel-nav-tabs .agel-tab {
+  display: flex;
+  align-items: center;
+}
