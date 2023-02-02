@@ -2,10 +2,7 @@
 
 > 一个基于 vite + vue3 + typescript + element-plsu 的后台管理系统基础模板。
 
-预览地址：
-
-- [预览 github](https://agrass-github.github.io/agel-admin/)
-- [预览 gitee](https://agrass.gitee.io/agel-admin/)
+- [预览地址：](https://agrass.gitee.io/agel-admin/)
 
 
 依赖的相关库：

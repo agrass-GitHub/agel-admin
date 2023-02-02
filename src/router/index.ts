@@ -1,11 +1,11 @@
 import { ElMessage } from 'element-plus';
 import useUserStore from '@/stores/useUserStore'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import type { MenuMeta } from "./routes"
 import routes from "./routes"
 
 const router = createRouter({
-  history: createWebHistory('/agel-admin/'),
+  history: createWebHashHistory('/agel-admin/'),
   routes: routes
 })
 
