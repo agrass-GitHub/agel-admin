@@ -1,1 +1,0 @@
-import{_ as e}from"./_plugin-vue_export-helper.cdc0426e.js";import{o,c as t,a as c}from"./index.fa94478b.js";const s={},n={class:"flex-center"},r=c("h1",null," \u9996\u9875",-1),_=[r];function a(d,f){return o(),t("div",n,_)}const m=e(s,[["render",a]]);export{m as default};
