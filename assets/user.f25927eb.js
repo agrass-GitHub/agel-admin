@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as r,c}from"./index.fa94478b.js";const o={};function t(n,s){return r(),c("div",null," user \u89D2\u8272\u53EF\u89C1 ")}const f=e(o,[["render",t]]);export{f as default};
