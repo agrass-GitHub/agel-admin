@@ -4,7 +4,7 @@
 
 - [预览地址：](https://agrass.gitee.io/agel-admin/)
 
-[](https://gitee.com/agrass/agel-admin/blob/main/src/assets/admin.jpg)
+![AgAdmin](https://gitee.com/agrass/agel-admin/raw/main/src/assets/admin.jpg)
 
 一个常见的列表模板页，如此简单：
 
