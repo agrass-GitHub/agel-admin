@@ -5,8 +5,3 @@
   border-bottom: 1px solid var(--el-border-color-lighter);
   color: inherit;
 }
-
-.agel-nav-tabs .agel-tab {
-  display: flex;
-  align-items: center;
-}

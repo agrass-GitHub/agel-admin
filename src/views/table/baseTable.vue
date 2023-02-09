@@ -19,7 +19,7 @@
         <ElButton icon="Search" round @click="search.show = !search.show"></ElButton>
       </div>
     </div>
-    <!-- table -->
+    <!-- 列表 -->
     <AgelTable class="flex-1" v-bind="table" v-model:page="table.page"> </AgelTable>
     <!-- 弹窗表单 -->
     <ElDialog v-model="form.show" :title="form.title" width="800px" top="10vh">
@@ -38,13 +38,7 @@ import { reactive, ref, nextTick } from 'vue'
 import type { FormInstance } from 'element-plus'
 import http from '@/api'
 
-type Row = {
-  name: string,
-  age: string,
-  email: string,
-  decs: string,
-  date: string,
-}
+type Row = { name: string, age: string, email: string, decs: string, date: string, }
 
 const searchRef = ref<FormInstance>()
 const search = reactive({
@@ -107,13 +101,7 @@ const table = reactive({
   loading: false,
   border: true,
   data: [] as Row[],
-  page: {
-    sortOrder: null,
-    sortProp: '',
-    currentPage: 1,
-    pageSize: 10,
-    total: 0,
-  },
+  page: { sortOrder: null, sortProp: '', currentPage: 1, pageSize: 10, total: 0, },
   columns: [
     { label: '#', type: "selection" },
     { label: '姓名', prop: "name", sortable: 'custom', width: 100 },
