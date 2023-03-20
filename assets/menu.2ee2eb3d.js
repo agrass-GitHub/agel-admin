@@ -1,0 +1,1 @@
+import{_ as t}from"./_plugin-vue_export-helper.cdc0426e.js";import{o,c as r,a as s,t as a}from"./index.58946262.js";const c={},n={class:"h-full flex-center"};function l(e,_){return o(),r("div",n,[s("h2",null,"\u591A\u7EA7\u83DC\u5355"+a(e.$route.name),1)])}const m=t(c,[["render",l]]);export{m as default};
