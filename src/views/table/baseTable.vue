@@ -48,7 +48,7 @@ const search = reactive({
     { label: '姓名', prop: "name", },
     { label: '年龄', prop: "age", },
     { label: '邮件', prop: 'email', },
-    { label: '出生日期', prop: 'date', slot: "el-date-picker" },
+    { label: '出生日期', prop: 'date', slot: "el-date-picker",attrs:{type:"datetime"} },
   ]
 })
 

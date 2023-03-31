@@ -31,15 +31,16 @@ const ElementPlusCrx = {
       }
     },
     ElDatePicker: function (props: any) {
-      let valueFormat = 'yyyy-MM-dd'
-      if (props.type == "datetime" || props.type == "datetimerange") {
-        valueFormat = "yyyy-MM-dd HH:mm:ss"
+      let valueFormat = 'YYYY-MM-DD'
+      let dateType = props?.attrs?.type
+      if (dateType == "datetime" || dateType == "datetimerange") {
+        valueFormat = "YYYY-MM-DD HH:mm:ss"
       }
-      if (props.type == "month" || props.type == "monthrange") {
-        valueFormat = "yyyy-MM"
+      if (dateType == "month" || dateType == "monthrange") {
+        valueFormat = "YYYY-MM"
       }
-      if (props.type == "year") {
-        valueFormat = "yyyy"
+      if (dateType == "year") {
+        valueFormat = "YYYY"
       }
       return {
         valueFormat,
