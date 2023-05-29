@@ -6,7 +6,7 @@
 
 ![AgAdmin](https://gitee.com/agrass/agel-admin/raw/main/src/assets/admin.jpg)
 
-一个常见的列表模板页，如此简单：
+一个常见增删改查的列表模板页，结构清晰，如此简单：
 
 ```html
 <template>
