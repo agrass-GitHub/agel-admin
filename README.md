@@ -1,6 +1,6 @@
 # Agel-Admin
 
-> 一个基于 vite + vue3 + typescript + element-plus + element-plus+crx 的后台管理系统基础模板。
+> 一个基于 vite + vue3 + typescript + element-plus + element-plus-crx 的后台管理系统基础模板。
 
 - [预览地址：](https://agrass.gitee.io/agel-admin/)
 
