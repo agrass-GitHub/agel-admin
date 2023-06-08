@@ -10,6 +10,7 @@ import useAppStore from "@/stores/useAppStore"
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import en from 'element-plus/es/locale/lang/en'
 import { computed } from "vue"
+import { ElementPlusCrxConfig } from "element-plus-crx"
 
 const appStore = useAppStore()
 
@@ -17,7 +18,15 @@ const locale = computed(() => {
   return { zhCn: zhCn, en: en }[appStore.language]
 })
 
-const ElementPlusCrx = {
+const ElementPlusCrx: ElementPlusCrxConfig = {
+  AgelTable: {
+    ElTable: {
+      highlightCurrentRow: true,
+    },
+    ElTableColumn: {
+      showOverflowTooltip: true,
+    }
+  },
   AgelFormItem: {
     AgelSelect: function (props: any) {
       return {
@@ -51,6 +60,4 @@ const ElementPlusCrx = {
 }
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
