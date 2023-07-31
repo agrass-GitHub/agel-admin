@@ -16,7 +16,7 @@ module.exports = {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
     'semi': [1, 'never'],
-    'no-undef':'off',
+    'no-undef': 'off',
   }
 }
 
