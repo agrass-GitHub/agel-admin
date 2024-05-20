@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col overflow-auto">
     <!-- 查询 -->
-    <ElForm ref="searchRef" v-show="search.show" :model="search.model" label-width="80px">
+    <ElForm :ref="(v) => (search.ref = v)" v-show="search.show" :model="search.model" label-width="80px">
       <AgelFormGrid :items="search.items" responsive></AgelFormGrid>
       <div class="flex justify-center mb-3">
-        <ElButton icon="RefreshRight" @click="() => searchRef?.resetFields()">重置</ElButton>
+        <ElButton icon="RefreshRight" @click="() => search.ref?.resetFields()">重置</ElButton>
         <ElButton type="primary" icon="Search" @click="table.request">查询</ElButton>
       </div>
     </ElForm>
@@ -23,7 +23,7 @@
     <AgelTable class="flex-1" v-bind="table" v-model:page="table.page"> </AgelTable>
     <!-- 弹窗表单 -->
     <ElDialog v-model="form.show" :title="form.title" width="800px" top="10vh">
-      <ElForm ref="formRef" :model="form.model" label-width="80px">
+      <ElForm :ref="(v) => (form.ref = v)" :model="form.model" label-width="80px">
         <AgelFormDesc :items="form.items" :view-model="form.state == 'view'"></AgelFormDesc>
       </ElForm>
       <template #footer>
@@ -37,8 +37,8 @@
 import { reactive, ref, nextTick } from 'vue'
 import http from '@/api'
 
-const searchRef = ref()
 const search = reactive({
+  ref: null,
   show: false,
   model: { name: '', age: '', email: '', date: '' },
   items: [
@@ -64,8 +64,8 @@ const search = reactive({
   ]
 })
 
-const formRef = ref()
 const form = reactive({
+  ref: null,
   show: false,
   title: '',
   state: 'edit',
@@ -87,7 +87,7 @@ const form = reactive({
     form.title = '新增用户'
     form.state = 'add'
     nextTick(() => {
-      formRef.value?.resetFields()
+      form.ref?.resetFields()
     })
   },
   toEdit: (row) => {
@@ -107,7 +107,7 @@ const form = reactive({
     })
   },
   submit: () => {
-    formRef.value?.validate().then(() => {
+    form.ref?.validate().then(() => {
       form.show = false
       table.request()
     })

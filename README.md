@@ -6,16 +6,16 @@
 
 ![AgAdmin](https://gitee.com/agrass/agel-admin/raw/main/src/assets/admin.jpg)
 
-一个常见增删改查的列表模板页，结构清晰，如此简单：
+一个常见增删改查的列表模板页，面向对象，结构清晰，如此简单：
 
 ```html
 <template>
-  <div class="flex flex-col overflow-hidden">
+  <div class="flex flex-col overflow-auto">
     <!-- 查询 -->
-    <ElForm ref="searchRef" v-show="search.show" :model="search.model" label-width="80px">
+    <ElForm :ref="(v) => (search.ref = v)" v-show="search.show" :model="search.model" label-width="80px">
       <AgelFormGrid :items="search.items" responsive></AgelFormGrid>
       <div class="flex justify-center mb-3">
-        <ElButton icon="RefreshRight" @click="() => searchRef?.resetFields()">重置</ElButton>
+        <ElButton icon="RefreshRight" @click="() => search.ref?.resetFields()">重置</ElButton>
         <ElButton type="primary" icon="Search" @click="table.request">查询</ElButton>
       </div>
     </ElForm>
@@ -34,7 +34,7 @@
     <AgelTable class="flex-1" v-bind="table" v-model:page="table.page"> </AgelTable>
     <!-- 弹窗表单 -->
     <ElDialog v-model="form.show" :title="form.title" width="800px" top="10vh">
-      <ElForm ref="formRef" :model="form.model" label-width="80px">
+      <ElForm :ref="(v) => (form.ref = v)" :model="form.model" label-width="80px">
         <AgelFormDesc :items="form.items" :view-model="form.state == 'view'"></AgelFormDesc>
       </ElForm>
       <template #footer>
@@ -44,24 +44,39 @@
   </div>
 </template>
 
-<script setup>
+<script lang="jsx" setup>
   import { reactive, ref, nextTick } from 'vue'
   import http from '@/api'
 
-  const searchRef = ref()
   const search = reactive({
+    ref: null,
     show: false,
     model: { name: '', age: '', email: '', date: '' },
     items: [
       { label: '姓名', prop: 'name' },
-      { label: '年龄', prop: 'age' },
+      {
+        label: '年龄',
+        prop: 'age',
+        slot: 'agel-select',
+        attrs: {
+          options: ['12', '13'],
+          onChange: (v) => {
+            console.log(v)
+          }
+        }
+      },
       { label: '邮件', prop: 'email' },
-      { label: '出生日期', prop: 'date', slot: 'el-date-picker' }
+      {
+        label: '出生日期',
+        prop: 'date',
+        slot: 'el-date-picker',
+        attrs: { type: 'datetime' }
+      }
     ]
   })
 
-  const formRef = ref()
   const form = reactive({
+    ref: null,
     show: false,
     title: '',
     state: 'edit',
@@ -71,17 +86,22 @@
       { label: '年龄', prop: 'age', required: true },
       { label: '出生日期', prop: 'date', slot: 'el-date-picker' },
       { label: '邮件', span: 3, prop: 'email' },
-      { label: '介绍', prop: 'decs', span: 3, attrs: { type: 'textarea', rows: 5 } }
+      {
+        label: '介绍',
+        prop: 'decs',
+        span: 3,
+        attrs: { type: 'textarea', rows: 5 }
+      }
     ],
     toAdd: () => {
       form.show = true
       form.title = '新增用户'
       form.state = 'add'
       nextTick(() => {
-        formRef.value?.resetFields()
+        form.ref?.resetFields()
       })
     },
-    toEdit: (row: Row) => {
+    toEdit: (row) => {
       form.show = true
       form.title = '编辑用户资料'
       form.state = 'edit'
@@ -89,7 +109,7 @@
         form.model = { ...row }
       })
     },
-    toView: (row: Row) => {
+    toView: (row) => {
       form.show = true
       form.title = '查看用户资料'
       form.state = 'view'
@@ -98,7 +118,7 @@
       })
     },
     submit: () => {
-      formRef.value?.validate().then(() => {
+      form.ref?.validate().then(() => {
         form.show = false
         table.request()
       })
@@ -109,7 +129,13 @@
     loading: false,
     border: true,
     data: [],
-    page: { sortOrder: null, sortProp: '', currentPage: 1, pageSize: 10, total: 0 },
+    page: {
+      sortOrder: null,
+      sortProp: '',
+      currentPage: 1,
+      pageSize: 10,
+      total: 0
+    },
     columns: [
       { label: '#', type: 'selection' },
       { label: '姓名', prop: 'name', sortable: 'custom', width: 100 },
