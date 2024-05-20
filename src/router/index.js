@@ -4,7 +4,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import routes from './routes'
 
 const router = createRouter({
-  history: createWebHashHistory('/agel-admin'),
+  history: createWebHashHistory(import.meta.env.VITE_BASE_PATH),
   routes: routes
 })
 

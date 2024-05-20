@@ -2,7 +2,7 @@
 
 > 一个基于 vite + vue3 + unocss + element-plus-crx 的后台管理系统基础模板。
 
-- [预览地址：](https://agrass-github.github.io/agel-admin/)
+- [预览地址：](https://agrass-github.github.io/agel-admin/#/login)
 
 ![AgAdmin](https://gitee.com/agrass/agel-admin/raw/main/src/assets/admin.jpg)
 
