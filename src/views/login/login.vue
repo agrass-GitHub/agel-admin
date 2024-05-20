@@ -4,7 +4,7 @@
       class="border border-gray-200 w-96 p-10 shadow-blue-200 shadow-md bg-white rounded-md dark:bg-[var(--el-bg-color)] dark:shadow-blue-700 dark:border-blue-900"
     >
       <div class="text-center text-2xl text-p mb-2">AG Admin</div>
-      <div class="text-gray-400 text-sm text-center">vite + vue3 + vueUse + element plus crx+ unocss</div>
+      <div class="text-gray-400 text-sm text-center">Vue3 + Pinna + VueUse + UnoCss + ElementPlusCrx</div>
       <ElForm ref="elFormRef" :model="form.data" :rules="form.rules" class="mt-8" label-position="top">
         <ElFormItem prop="account">
           <ElInput v-model="form.data.account" placeholder="Please input account" @keydown="keydown($event)"></ElInput>
