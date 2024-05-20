@@ -1,13 +1,9 @@
 <template>
   <div class="h-full flex-center">
-    <h2>多级菜单{{$route.name}}</h2>
+    <h2>多级菜单{{ $route.name }}</h2>
   </div>
 </template>
 
-<script setup lang='ts'>
+<script setup></script>
 
-
-</script>
-
-<style scoped>
-</style>
+<style scoped></style>

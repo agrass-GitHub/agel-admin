@@ -4,7 +4,7 @@ import { watchEffect } from 'vue'
 
 
 
-export default function useElTheme(option: { primaryColor: string, isDark: boolean, isGray: boolean }) {
+export default function useElTheme(option) {
 
   // 是否是黑暗模式
   const isDark = useStorage('isDark', option.isDark)
@@ -19,7 +19,7 @@ export default function useElTheme(option: { primaryColor: string, isDark: boole
 
 
   // 修改 elment 主题色
-  function switchElThemeColor(color: string, type: 'primary' | 'success' | 'warning' | 'danger' | 'info' = 'primary') {
+  function switchElThemeColor(color, type) {
     const levels = [3, 5, 7, 8, 9]
     document.documentElement.style.setProperty(`--el-color-${type}`, color)
     document.documentElement.style.setProperty(`--el-color-${type}-dark-2`, `${(isDark.value ? getLightColor : getDarkColor)(color, 0.2)}`)
@@ -31,5 +31,5 @@ export default function useElTheme(option: { primaryColor: string, isDark: boole
     })
   }
 
-  return { isDark,isGray, primaryColor }
+  return { isDark, isGray, primaryColor }
 }

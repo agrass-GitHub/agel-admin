@@ -12,7 +12,7 @@
   </AgelNavTabs>
   <!-- 主界面 -->
   <ElMain class="flex flex-col flex-1 p-2 bg-gray-200 dark:bg-[var(--el-bg-color-page)] overflow-hidden">
-    <div class="flex flex-col flex-1  bg-white dark:bg-[var(--el-bg-color)] overflow-hidden"
+    <div class="flex flex-col flex-1 bg-white dark:bg-[var(--el-bg-color)] overflow-hidden"
       :class="{ 'full-screen-view': fullScreen }">
       <RouterView v-slot="{ Component, route }">
         <transition appear name="el-fade-in-linear" mode="out-in">
@@ -38,56 +38,66 @@
   <!-- </ElContainer> -->
 </template>
 
-<script setup lang='ts'>
-import { dynamicRoutes, homeRoute } from "@/router/routes"
-import { ref, reactive, toRef, watch } from "vue"
-import { useStorage } from "@vueuse/core"
+<script setup>
+import { dynamicRoutes, homeRoute } from '@/router/routes'
+import { ref, reactive, watch } from 'vue'
+import { useStorage } from '@vueuse/core'
 import useAppStore from '@/stores/useAppStore'
-import useUserStore from "@/stores/useUserStore"
+import useUserStore from '@/stores/useUserStore'
 import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
-const homeTab = { path: homeRoute.path, title: homeRoute.meta.title, icon: homeRoute.meta.icon, fixed: true }
+const homeTab = {
+  path: homeRoute.path,
+  title: homeRoute.meta.title,
+  icon: homeRoute.meta.icon,
+  fixed: true
+}
 const appStore = useAppStore()
 const userStore = useUserStore()
 const fullScreen = ref(false)
 const navTabs = useStorage('AgelNavTabs', [homeTab], sessionStorage)
 const keepAliveNames = getKeepAliveNames(dynamicRoutes)
-const routeKeyMap = reactive<{ [k: string]: number }>({})
+const routeKeyMap = reactive({})
 
-watch(() => route.path, () => {
-  const index = navTabs.value.findIndex((item) => item.path === route.path)
-  if (index == -1) {
-    navTabs.value.push({
-      path: route.path,
-      icon: route.meta.icon as string,
-      title: route.meta.title as string,
-      fixed: false,
-    })
-  }
-}, { immediate: true })
-
+watch(
+  () => route.path,
+  () => {
+    const index = navTabs.value.findIndex((item) => item.path === route.path)
+    if (index == -1) {
+      navTabs.value.push({
+        path: route.path,
+        icon: route.meta.icon,
+        title: route.meta.title,
+        fixed: false
+      })
+    }
+  },
+  { immediate: true }
+)
 
 // 监听退出登录，清空持久化缓存
-watch(() => userStore.token, (newv) => {
-  if (newv == '') {
-    navTabs.value = [homeTab]
+watch(
+  () => userStore.token,
+  (newv) => {
+    if (newv == '') {
+      navTabs.value = [homeTab]
+    }
   }
-})
+)
 
-
-function pathChange(path: string) {
+function pathChange(path) {
   router.push({ path })
 }
 
-function refreshRouteView({ path }: { path: string }) {
+function refreshRouteView({ path }) {
   routeKeyMap[path] = new Date().getTime()
 }
 
-function getKeepAliveNames(list: typeof dynamicRoutes, arr: string[] = []) {
-  list.forEach(item => {
-    const name = item.name as string
+function getKeepAliveNames(list, arr = []) {
+  list.forEach((item) => {
+    const name = item.name
     if (item.children && item.children.length > 0) {
       getKeepAliveNames(item.children, arr)
     } else if (item.meta && item.meta.keepAlive && arr.indexOf(name) === -1) {
@@ -98,6 +108,4 @@ function getKeepAliveNames(list: typeof dynamicRoutes, arr: string[] = []) {
 }
 </script>
 
-<style scoped >
-
-</style>
+<style scoped></style>

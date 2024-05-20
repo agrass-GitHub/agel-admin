@@ -1,12 +1,7 @@
 <template>
-  <div>
-    user 角色可见
-  </div>
+  <div>user 角色可见</div>
 </template>
 
-<script setup lang='ts'>
+<script setup></script>
 
-</script>
-
-<style scoped>
-</style>
+<style scoped></style>

@@ -1,18 +1,16 @@
-import { ElMessage } from 'element-plus';
+import { ElMessage } from 'element-plus'
 import useUserStore from '@/stores/useUserStore'
 import { createRouter, createWebHashHistory } from 'vue-router'
-import type { MenuMeta } from "./routes"
-import routes from "./routes"
+import routes from './routes'
 
 const router = createRouter({
-  history: createWebHashHistory('/agel-admin/'),
+  history: createWebHashHistory('/agel-admin'),
   routes: routes
 })
 
-
-router.beforeEach((to,) => {
+router.beforeEach((to) => {
   const whitlist = ['/login']
-  const meta = to.meta as MenuMeta
+  const meta = to.meta
   const userStore = useUserStore()
 
   const isWhitlist = whitlist.includes(to.path)

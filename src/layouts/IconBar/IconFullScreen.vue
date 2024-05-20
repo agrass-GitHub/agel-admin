@@ -4,12 +4,10 @@
   </ElIcon>
 </template>
 
-<script setup lang='ts'>
+<script setup>
 import { useFullscreen } from '@vueuse/core'
 
 const { isFullscreen, toggle } = useFullscreen()
 </script>
 
-<style scoped >
-
-</style>
+<style scoped></style>

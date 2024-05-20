@@ -1,7 +1,7 @@
 <template>
   <ElBreadcrumb separator-icon="ArrowRight">
-    <TransitionGroup name="breadcrumb" >
-      <ElBreadcrumbItem v-for="item in list" :key="item.path" :to="(item.to as string)">
+    <TransitionGroup name="breadcrumb">
+      <ElBreadcrumbItem v-for="item in list" :key="item.path" :to="item.to">
         <div class="flex items-center space-x-1">
           <ElIcon v-if="item.icon">
             <component :is="item.icon"></component>
@@ -13,24 +13,24 @@
   </ElBreadcrumb>
 </template>
 
-<script setup lang='ts'>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+<script setup>
 const route = useRoute()
 
 const list = computed(() => {
-  return route.matched.filter(v => v.meta && v.meta.title).map(v => {
-    return {
-      path: v.path,
-      title: v.meta.title,
-      icon: v.meta.icon,
-      to: v.redirect
-    }
-  })
+  return route.matched
+    .filter((v) => v.meta && v.meta.title)
+    .map((v) => {
+      return {
+        path: v.path,
+        title: v.meta.title,
+        icon: v.meta.icon,
+        to: v.redirect
+      }
+    })
 })
 </script>
 
-<style scoped >
+<style scoped>
 .breadcrumb-enter-active,
 .breadcrumb-leave-active {
   transition: all 0.3s ease;

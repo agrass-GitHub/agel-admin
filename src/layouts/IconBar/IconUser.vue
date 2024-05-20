@@ -20,9 +20,9 @@
   </ElDropdown>
 </template>
 
-<script setup lang='ts'>
-import useUserStore from "@/stores/useUserStore"
-import { useRouter } from "vue-router"
+<script setup>
+import useUserStore from '@/stores/useUserStore'
+import { useRouter } from 'vue-router'
 const userStore = useUserStore()
 const router = useRouter()
 
@@ -33,6 +33,4 @@ function logoutApp() {
 }
 </script>
 
-<style scoped lang='scss'>
-
-</style>
+<style scoped lang="scss"></style>

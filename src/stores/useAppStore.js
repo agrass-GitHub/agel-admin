@@ -1,8 +1,7 @@
-import { ref, computed, } from 'vue'
+import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 import useElTheme from '@/utils/useElTheme'
-import type { ComponentSize } from "element-plus"
 
 export default defineStore('appStore', () => {
   // 菜单是否展开
@@ -10,7 +9,7 @@ export default defineStore('appStore', () => {
   // 菜单宽度
   const slideMenuWidth = computed(() => menuCollapse.value ? '65px' : '220px')
   // 布局方式
-  const layout = useStorage<'classics' | 'horizontal' | 'vertical'>('layout', 'vertical')
+  const layout = useStorage('layout', 'vertical')
   // 是否显示主题设置弹窗
   const themeDrawer = ref(false)
   // 是否显示面包屑
@@ -22,9 +21,9 @@ export default defineStore('appStore', () => {
   // 是否显示页脚
   const footer = ref(true)
   // 组件大小
-  const componentSize: ComponentSize = "default"
+  const componentSize = "default"
   // 组件语言
-  const language: 'zhCn' | 'en' = "zhCn"
+  const language = "zhCn"
   // 主题
   const { isDark, isGray, primaryColor } = useElTheme({ isDark: false, isGray: false, primaryColor: '#2463eb' })
 

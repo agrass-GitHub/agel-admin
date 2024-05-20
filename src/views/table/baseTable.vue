@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col overflow-hidden">
+  <div class="flex flex-col overflow-auto">
     <!-- 查询 -->
     <ElForm ref="searchRef" v-show="search.show" :model="search.model" label-width="80px">
       <AgelFormGrid :items="search.items" responsive></AgelFormGrid>
@@ -33,26 +33,27 @@
   </div>
 </template>
 
-<script lang="tsx" setup>
+<script lang="jsx" setup>
 import { reactive, ref, nextTick } from 'vue'
-import type { FormInstance } from 'element-plus'
 import http from '@/api'
 
-type Row = {
-  name: string
-  age: string
-  email: string
-  decs: string
-  date: string
-}
-
-const searchRef = ref<FormInstance>()
+const searchRef = ref()
 const search = reactive({
   show: false,
   model: { name: '', age: '', email: '', date: '' },
   items: [
     { label: '姓名', prop: 'name' },
-    { label: '年龄', prop: 'age' },
+    {
+      label: '年龄',
+      prop: 'age',
+      slot: 'agel-select',
+      attrs: {
+        options: ['12', '13'],
+        onChange: (v) => {
+          console.log(v)
+        }
+      }
+    },
     { label: '邮件', prop: 'email' },
     {
       label: '出生日期',
@@ -63,7 +64,7 @@ const search = reactive({
   ]
 })
 
-const formRef = ref<FormInstance>()
+const formRef = ref()
 const form = reactive({
   show: false,
   title: '',
@@ -89,7 +90,7 @@ const form = reactive({
       formRef.value?.resetFields()
     })
   },
-  toEdit: (row: Row) => {
+  toEdit: (row) => {
     form.show = true
     form.title = '编辑用户资料'
     form.state = 'edit'
@@ -97,7 +98,7 @@ const form = reactive({
       form.model = { ...row }
     })
   },
-  toView: (row: Row) => {
+  toView: (row) => {
     form.show = true
     form.title = '查看用户资料'
     form.state = 'view'
@@ -116,7 +117,7 @@ const form = reactive({
 const table = reactive({
   loading: false,
   border: true,
-  data: [] as Row[],
+  data: [],
   page: {
     sortOrder: null,
     sortProp: '',
@@ -135,15 +136,14 @@ const table = reactive({
       width: '120px',
       label: '操作',
       fixed: 'right',
-      slot: (scope: any) => {
+      slot: (scope) => {
         return (
           <div>
             <el-button link type="primary" onClick={() => form.toView(scope.row)}>
-              查看{' '}
+              查看
             </el-button>
             <el-divider direction="vertical" />
             <el-button link type="primary" onClick={() => form.toEdit(scope.row)}>
-              {' '}
               编辑
             </el-button>
           </div>

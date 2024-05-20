@@ -5,11 +5,6 @@ html,
   height: 100%;
 }
 
-*,
-::before,
-::after {
-  border-color: var(--el-border-color-light);
-}
 
 .flex-center {
   @apply flex justify-center items-center;
@@ -21,7 +16,6 @@ html,
 
 .full-screen-view {
   @apply w-screen h-screen fixed top-0 left-0;
-  z-index: 10;
 }
 
 .text-p {
@@ -30,4 +24,8 @@ html,
 
 .bg-p {
   background-color: var(--el-color-primary);
+}
+
+.agel-table-resize {
+  overflow: auto;
 }

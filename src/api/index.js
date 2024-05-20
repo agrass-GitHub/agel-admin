@@ -1,7 +1,6 @@
-import axios from "axios"
-import { ElMessage } from "element-plus"
-import useUserStore from "@/stores/useUserStore"
-
+import axios from 'axios'
+import { ElMessage } from 'element-plus'
+import useUserStore from '@/stores/useUserStore'
 
 const http = axios.create({
   timeout: 30000,
@@ -10,7 +9,7 @@ const http = axios.create({
 
 http.interceptors.request.use((config) => {
   const userStore = useUserStore()
-  config.headers!['token'] = userStore.token
+  config.headers['token'] = userStore.token
   return config
 })
 

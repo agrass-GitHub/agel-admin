@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script setup lang='ts'>
+<script setup>
 import IconCollapse from './IconCollapse.vue'
 import AppBreadcrumb from '../AppBreadcrumb/AppBreadcrumb.vue'
 import useAppStore from '@/stores/useAppStore'
@@ -13,6 +13,4 @@ import useAppStore from '@/stores/useAppStore'
 const appStore = useAppStore()
 </script>
 
-<style scoped >
-
-</style>
+<style scoped></style>

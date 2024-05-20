@@ -1,9 +1,8 @@
-import { ref, computed, readonly } from 'vue'
+import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
-import { dynamicRoutes,type MenuItem } from "@/router/routes"
+import { dynamicRoutes } from "@/router/routes"
 import http from "@/api"
-
 
 export default defineStore('userStore', () => {
 
@@ -22,7 +21,6 @@ export default defineStore('userStore', () => {
   const menuData = computed(() => {
     return getMenuData(dynamicRoutes)
   })
-  
 
   function getInitUserInfo() {
     return {
@@ -34,7 +32,7 @@ export default defineStore('userStore', () => {
     }
   }
 
-  function loginApp(data: { account: string | number, password: string | number }) {
+  function loginApp(data) {
     return http({
       url: "/mock/login",
       method: 'post',
@@ -52,12 +50,12 @@ export default defineStore('userStore', () => {
     }))
   }
 
-  function getMenuData(list: MenuItem[]) {
+  function getMenuData(list) {
     return list.map(item => {
       const isShow = item.meta.hidden !== true
       const hasRole = item.meta.roles ? item.meta.roles.includes(role.value) : true
       const menuItem = {
-        children: [] as any,
+        children: [],
         title: item.meta.title,
         icon: item.meta.icon,
         index: item.path,
@@ -72,7 +70,7 @@ export default defineStore('userStore', () => {
 
   return {
     // 不能修改
-    userInfo: readonly(userInfo),
+    userInfo: userInfo,
     menuData,
     token,
     role,
@@ -80,4 +78,3 @@ export default defineStore('userStore', () => {
     logoutApp
   }
 })
-

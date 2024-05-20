@@ -6,15 +6,15 @@ import ElementPlusCrx from 'element-plus-crx'
 
 import App from './App.vue'
 import router from './router'
-import "@/api/mock"
+import '@/api/mock'
 
 // css
-import '@/styles/tailwind.css'
 import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import '@/styles/ui-cover.css'
 import '@/styles/class.css'
-
+import 'virtual:uno.css'
+import '@unocss/reset/tailwind-compat.css'
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -29,5 +29,3 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 
 app.mount('#app')
-
-
