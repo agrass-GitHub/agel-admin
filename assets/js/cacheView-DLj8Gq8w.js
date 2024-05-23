@@ -1,1 +1,0 @@
-import{r as n,ai as t,o as s,c as u,V as r,u as c,D as p,a as m}from"./@vue-BUfntaX4.js";const _=m("h2",null,"带有缓存的页面，输入 input value 进行测试",-1),f={__name:"cacheView",setup(d){const e=n("");return(i,a)=>{const l=t("ElInput");return s(),u("div",null,[_,r(l,{modelValue:c(e),"onUpdate:modelValue":a[0]||(a[0]=o=>p(e)?e.value=o:null)},null,8,["modelValue"])])}}};export{f as default};

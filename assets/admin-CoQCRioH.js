@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{o as c,c as n}from"./index-C5ViBo8_.js";const o={};function r(t,a){return c(),n("div",null,"admin 管理员可见")}const m=e(o,[["render",r]]);export{m as default};
