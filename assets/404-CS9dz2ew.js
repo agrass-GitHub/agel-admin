@@ -1,1 +1,0 @@
-import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{o as t,c as s,a as c}from"./index-DTdNfs9K.js";const o={},r={class:"flex items-center justify-center h-full w-full bg-gray-400"},n=c("h2",null,"404,页面未找到",-1),_=[n];function a(l,f){return t(),s("div",r,_)}const m=e(o,[["render",a]]);export{m as default};
