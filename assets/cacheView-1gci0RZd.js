@@ -1,1 +1,0 @@
-import{j as n,d as t,o as s,c as u,b as r,u as c,k as p,a as d}from"./index-DNBQq5mp.js";const m=d("h2",null,"带有缓存的页面，输入 input value 进行测试",-1),V={__name:"cacheView",setup(_){const e=n("");return(i,a)=>{const l=t("ElInput");return s(),u("div",null,[m,r(l,{modelValue:c(e),"onUpdate:modelValue":a[0]||(a[0]=o=>p(e)?e.value=o:null)},null,8,["modelValue"])])}}};export{V as default};

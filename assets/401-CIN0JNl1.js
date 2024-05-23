@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{o as t,c as s,a as c}from"./index-CDUaJVuJ.js";const o={},r={class:"flex items-center justify-center h-full w-full bg-gray-400"},n=c("h2",null,"你没有该页面的权限，请联系管理员",-1),_=[n];function a(l,f){return t(),s("div",r,_)}const m=e(o,[["render",a]]);export{m as default};
