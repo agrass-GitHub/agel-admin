@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{o,c as t,a as c}from"./index-B_29tRI0.js";const s={},n={class:"flex-center"},r=c("h1",null,"首页",-1),_=[r];function a(d,f){return o(),t("div",n,_)}const m=e(s,[["render",a]]);export{m as default};
