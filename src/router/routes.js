@@ -1,3 +1,5 @@
+import Home from '@/views/home/home.vue' // 避免生成 _plugin-vue_export-helper
+
 export const homeRoute = {
   path: '/home',
   name: 'home',
@@ -6,7 +8,7 @@ export const homeRoute = {
     icon: 'HomeFilled',
     hidden: true
   },
-  component: () => import('@/views/home/home.vue')
+  component: Home
 }
 
 export const dynamicRoutes = [
@@ -170,13 +172,6 @@ export const dynamicRoutes = [
   }
 ]
 
-export const layoutRoute = {
-  path: '/index',
-  redirect: homeRoute.path,
-  component: () => import('@/layouts/IndexLayout/dynamicLayout.vue'),
-  children: dynamicRoutes
-}
-
 export const routes = [
   {
     path: '/',
@@ -201,7 +196,12 @@ export const routes = [
     name: 'login',
     component: () => import('@/views/login/login.vue')
   },
-  layoutRoute
+  {
+    path: '/index',
+    redirect: homeRoute.path,
+    component: () => import('@/layouts/IndexLayout/dynamicLayout.vue'),
+    children: dynamicRoutes
+  }
 ]
 
 export default routes
