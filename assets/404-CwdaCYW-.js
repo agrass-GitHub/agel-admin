@@ -1,0 +1,1 @@
+import{_ as t,d as s,f as r,o as n}from"./index-DLaLWGBO.js";const o={},c={class:"flex items-center justify-center h-full w-full bg-gray-400"};function l(a,e){return n(),s("div",c,e[0]||(e[0]=[r("h2",null,"404,页面未找到",-1)]))}const _=t(o,[["render",l]]);export{_ as default};
